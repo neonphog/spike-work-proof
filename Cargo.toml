@@ -2,5 +2,21 @@
 name = "spike-work-proof"
 version = "0.1.0"
 edition = "2024"
+resolver = "3"
+
+[lib]
+crate-type = ["rlib", "cdylib"]
 
 [dependencies]
+argon2 = { version = "0.5.3", default-features = false }
+futures = { version = "0.3.31", optional = true }
+wasm-bindgen = { version = "0.2.101", optional = true }
+
+[features]
+default = []
+
+# enable tools for compiling to wasm
+wasm = ["dep:wasm-bindgen"]
+
+[dev-dependencies]
+num_cpus = "1.17.0"
